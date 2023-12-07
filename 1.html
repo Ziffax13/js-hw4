@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let car = {
+            manufacturer: "Toyota",
+            model: "Camry",
+            year: 2020,
+            averageSpeed: 60
+        };
+
+        function displayCarInfo(car) {
+            console.log(`Manufacturer: ${car.manufacturer}`);
+            console.log(`Model: ${car.model}`);
+            console.log(`Year: ${car.year}`);
+            console.log(`Average Speed: ${car.averageSpeed} km/h`);
+        }
+
+        function calculateTime(distance, car) {
+            const time = distance / car.averageSpeed; 
+            const breaks = Math.floor(time / 4); 
+            const totalTime = time + breaks; 
+            return totalTime;
+        }
+
+        displayCarInfo(car);
+        const distance = 300; 
+        const timeTaken = calculateTime(distance, car);
+        console.log(`Для преодоления ${distance} км потребуется ${timeTaken} часов`);
+
+    </script>
+</body>
+</html>

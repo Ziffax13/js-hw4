@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let time = {
+            hours: 20,
+            minutes: 30,
+            seconds: 45
+        };
+
+        function displayTime(time) {
+            const formattedHours = String(time.hours).padStart(2, '0');
+            const formattedMinutes = String(time.minutes).padStart(2, '0');
+            const formattedSeconds = String(time.seconds).padStart(2, '0');
+            console.log(`Current Time: ${formattedHours}:${formattedMinutes}:${formattedSeconds}`);
+        }
+
+        function changeSeconds(time, seconds) {
+            time.seconds += seconds;
+            if (time.seconds >= 60) {
+                const extraMinutes = Math.floor(time.seconds / 60);
+                time.seconds %= 60;
+                time.minutes += extraMinutes;
+            }
+            if (time.minutes >= 60) {
+                const extraHours = Math.floor(time.minutes / 60);
+                time.minutes %= 60;
+                time.hours += extraHours;
+            }
+            time.hours %= 24;
+            return time;
+        }
+
+        function changeMinutes(time, minutes) {
+            return changeSeconds(time, minutes * 60);
+        }
+
+        function changeHours(time, hours) {
+            return changeSeconds(time, hours * 3600);
+        }
+
+        displayTime(time);
+        changeSeconds(time, 30);
+        displayTime(time);
+        changeMinutes(time, 5); 
+        displayTime(time);
+        changeHours(time, 2);
+        displayTime(time);
+
+    </script>
+</body>
+</html>
